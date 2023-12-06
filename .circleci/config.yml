@@ -1,0 +1,15 @@
+version: 2.1
+
+orbs:
+  terraform: circleci/terraform@3.2.1
+
+jobs:
+
+workflows:
+  version: 2
+  lint:
+    jobs:
+      - terraform/fmt
+  validate:
+    jobs:
+      - terraform/validate
