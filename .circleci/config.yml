@@ -5,19 +5,17 @@ orbs:
 
 jobs:
   lint:
-    executor: terraform/default
+    docker:
+      - image: hashicorp/terraform:1.6
     steps:
       - checkout
-      - terraform/install:
-          terraform_version: "latest"
       - terraform/fmt
 
   test:
-    executor: terraform/default
+    docker:
+      - image: hashicorp/terraform:1.6
     steps:
       - checkout
-      - terraform/install:
-          terraform_version: "latest"
       - terraform/validate
 
 workflows:
