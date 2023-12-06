@@ -120,6 +120,8 @@ resource "google_project_service" "admin_sdk_api" {
 
 ######## Sym Resources
 
+resource "sym_integration" "google_workload_identity_federation" {}
+
 # Create a sym_integration for the created Google Workload Identity Federation resources.
 resource "sym_integration" "google_workload_identity_federation" {
   external_id = data.google_organization.this.domain
