@@ -9,7 +9,9 @@ workflows:
   version: 2
   lint:
     jobs:
-      - terraform/fmt
+      - terraform/fmt:
+          checkout: true
   validate:
     jobs:
-      - terraform/validate
+      - terraform/validate:
+          checkout: true
