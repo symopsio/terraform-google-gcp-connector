@@ -124,7 +124,7 @@ resource "google_project_service" "admin_sdk_api" {
 resource "sym_integration" "google_workload_identity_federation" {
   external_id = data.google_organization.this.domain
   name        = "google-${var.environment}"
-  type   = "google"
+  type        = "google"
 
   settings = {
     type                              = "external_account"
