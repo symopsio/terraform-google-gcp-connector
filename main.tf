@@ -85,6 +85,8 @@ resource "google_iam_workload_identity_pool_provider" "sym_integration_aws_provi
 # Create a Service Account for the Sym integration
 # See: https://cloud.google.com/iam/docs/workload-identity-federation-with-other-clouds#create_a_service_account_for_the_external_workload
 resource "google_service_account" "sym" {
+  depends_on = [google_project_service.iam_api]
+
   project = data.google_project.sym_integration.project_id
 
   account_id   = "sym-integration-${var.environment}"
@@ -94,6 +96,8 @@ resource "google_service_account" "sym" {
 # Allow the Sym Runtime to impersonate the service account
 # https://cloud.google.com/iam/docs/workload-identity-federation-with-other-clouds#allow_the_external_workload_to_impersonate_the_service_account
 resource "google_service_account_iam_member" "this" {
+  depends_on = [google_project_service.iam_api]
+
   role               = "roles/iam.workloadIdentityUser"
   service_account_id = google_service_account.sym.id
   member             = "principal://iam.googleapis.com/projects/${data.google_project.sym_integration.number}/locations/global/workloadIdentityPools/${google_iam_workload_identity_pool.sym_integration.workload_identity_pool_id}/subject/${var.sym_runtime_arn}"
