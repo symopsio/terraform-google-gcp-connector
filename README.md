@@ -10,6 +10,17 @@ must be configured with credentials that have the permissions to:
   - Create Workload Identity Pools and Providers
   - Create and manage Service Accounts
 
+## Caveats
+### Google Group Management
+If using this module to set up the infrastructure to allow Sym to manage Google Group management, you must additionally
+grant the Sym Service Account some permissions in your Google Workspace account.
+
+To do so, you must create a custom Admin Role in the [Google Workspaces Admin Console](https://admin.google.com/ac/roles)
+and grant it to the Sym Service Account created by this module (the [`service_account`](#output\_service\_account) output.)
+
+For detailed instructions on how to create this role manually in the Admin Console, please see visit the main 
+[Sym docs](https://docs.symops.com/docs/google).
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
