@@ -15,5 +15,5 @@ output "workload_identity_pool" {
 
 output "sym_integration" {
   value       = sym_integration.google_workload_identity_federation
-  description = "The `google` Sym Integration created by this module. This Integration may be used to use Google SDK methods in a Flow's implementation, or enable a Google Access Strategy. See our [main documentation](https://docs.symops.com/docs/google) for more information"
+  description = "The `google` Sym Integration created by this module. This Integration may be used to enable Google SDK methods in a Flow's implementation, or as part of a Google Access Strategy. See our [main documentation](https://docs.symops.com/docs/google) for more information"
 }
