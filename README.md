@@ -74,9 +74,9 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_service_account"></a> [service\_account](#output\_service\_account) | n/a |
-| <a name="output_sym_integration"></a> [sym\_integration](#output\_sym\_integration) | n/a |
+| <a name="output_service_account"></a> [service\_account](#output\_service\_account) | The Google Cloud Platform service account created by this module. See: [google\_service\_account](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_service_account) |
+| <a name="output_sym_integration"></a> [sym\_integration](#output\_sym\_integration) | The `google` Sym Integration created by this module. This Integration may be used to use Google SDK methods in a Flow's implementation, or enable a Google Access Strategy. See our [main documentation](https://docs.symops.com/docs/google) for more information |
 | <a name="output_validate_google_workspace_customer_id"></a> [validate\_google\_workspace\_customer\_id](#output\_validate\_google\_workspace\_customer\_id) | n/a |
-| <a name="output_workload_identity_pool"></a> [workload\_identity\_pool](#output\_workload\_identity\_pool) | n/a |
-| <a name="output_workload_identity_pool_provider"></a> [workload\_identity\_pool\_provider](#output\_workload\_identity\_pool\_provider) | n/a |
+| <a name="output_workload_identity_pool"></a> [workload\_identity\_pool](#output\_workload\_identity\_pool) | The Workload Identity Pool created by this module. See: [iam\_workload\_identity\_pool](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_workload_identity_pool) |
+| <a name="output_workload_identity_pool_provider"></a> [workload\_identity\_pool\_provider](#output\_workload\_identity\_pool\_provider) | The Workload Identity Pool Provider created by this module. The identity pool allows access only to the Sym AWS Runtime Role. See: [iam\_workload\_identity\_pool\_provider](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_workload_identity_pool_provider) |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
