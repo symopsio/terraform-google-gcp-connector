@@ -33,6 +33,8 @@ output "validate_google_workspace_customer_id" {
     condition     = (var.enable_google_group_management && var.google_workspace_customer_id != null && var.google_workspace_customer_id != "")
     error_message = "If managing Google Groups, then google_workspace_customer_id is required."
   }
+
+  description = "A null output, used as a workaround to validate that `google_workspace_customer_id` is non-empty if `enable_google_group_management` is true."
 }
 
 variable "sym_account_id" {
