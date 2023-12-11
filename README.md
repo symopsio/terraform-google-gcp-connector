@@ -26,7 +26,7 @@ For detailed instructions on how to create this role manually in the Admin Conso
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.2.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.7 |
 | <a name="requirement_google"></a> [google](#requirement\_google) | >= 5.7.0 |
 | <a name="requirement_sym"></a> [sym](#requirement\_sym) | >= 2.0 |
 
