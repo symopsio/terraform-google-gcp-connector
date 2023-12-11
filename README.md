@@ -26,7 +26,7 @@ module "gcp_connector" {
 
 ## Caveats
 ### Google Group Management
-If using this module to set up the infrastructure to allow Sym to manage Google Groups, you must additionally
+If using this module to set up the infrastructure to allow Sym to manage Google Group membership, you must additionally
 grant the Sym Service Account some permissions in your Google Workspace account.
 
 To do so, you must create a custom Admin Role in the [Google Workspaces Admin Console](https://admin.google.com/ac/roles)
