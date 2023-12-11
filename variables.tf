@@ -18,25 +18,6 @@ variable "enable_google_group_management" {
   default     = false
 }
 
-variable "google_workspace_customer_id" {
-  description = "The Google Workspace Customer ID. Required if managing Google Group memberships."
-  type        = string
-  default     = null
-}
-
-output "validate_google_workspace_customer_id" {
-  # A workaround to validate that `google_workspace_customer_id` is not empty, if managing Google Groups.
-  # See: https://github.com/hashicorp/terraform/issues/25609#issuecomment-1472119672
-
-  value = null
-  precondition {
-    condition     = (var.enable_google_group_management && var.google_workspace_customer_id != null && var.google_workspace_customer_id != "")
-    error_message = "If managing Google Groups, then google_workspace_customer_id is required."
-  }
-
-  description = "A null output, used as a workaround to validate that `google_workspace_customer_id` is non-empty if `enable_google_group_management` is true."
-}
-
 variable "sym_account_id" {
   description = "The AWS account ID that can impersonate the created Google service account. Defaults to the Sym Production AWS account ID."
   type        = string

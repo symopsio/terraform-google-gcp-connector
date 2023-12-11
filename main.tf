@@ -144,6 +144,6 @@ resource "sym_integration" "google_workload_identity_federation" {
       regional_cred_verification_url = "https://sts.{region}.amazonaws.com?Action=GetCallerIdentity&Version=2011-06-15"
     })
 
-    customer_id = var.google_workspace_customer_id
+    customer_id = data.google_organization.this.directory_customer_id
   }
 }
