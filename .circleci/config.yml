@@ -1,0 +1,29 @@
+version: 2.1
+
+orbs:
+  terraform: circleci/terraform@3.2.1
+
+jobs:
+  lint:
+    docker:
+      - image: hashicorp/terraform:1.6
+    steps:
+      - checkout
+      - terraform/fmt
+
+  test:
+    docker:
+      - image: hashicorp/terraform:1.6
+    steps:
+      - checkout
+      - terraform/validate
+
+workflows:
+  version: 2
+  lint:
+    jobs:
+      - lint
+
+  test:
+    jobs:
+      - test
