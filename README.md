@@ -10,9 +10,23 @@ must be configured with credentials that have the permissions to:
   - Create Workload Identity Pools and Providers
   - Create and manage Service Accounts
 
+## Example Usage
+```terraform
+module "gcp_connector" {
+  source  = "symopsio/gcp-connector/google"
+  version = "~> 1.0"
+
+  environment              = "production"
+  identity_pool_project_id = "my-project-id"
+  gcp_org_id               = "123456789"
+
+  enable_google_group_management = true
+}
+```
+
 ## Caveats
 ### Google Group Management
-If using this module to set up the infrastructure to allow Sym to manage Google Group management, you must additionally
+If using this module to set up the infrastructure to allow Sym to manage Google Groups, you must additionally
 grant the Sym Service Account some permissions in your Google Workspace account.
 
 To do so, you must create a custom Admin Role in the [Google Workspaces Admin Console](https://admin.google.com/ac/roles)
