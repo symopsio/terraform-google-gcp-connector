@@ -81,7 +81,7 @@ No modules.
 | <a name="input_gcp_org_id"></a> [gcp\_org\_id](#input\_gcp\_org\_id) | The Organization ID of your Google Cloud Organization | `any` | n/a | yes |
 | <a name="input_identity_pool_project_id"></a> [identity\_pool\_project\_id](#input\_identity\_pool\_project\_id) | The Project ID of the Google Cloud Project where the Workload Identity Federation resources will be created in. | `string` | n/a | yes |
 | <a name="input_sym_account_id"></a> [sym\_account\_id](#input\_sym\_account\_id) | The AWS account ID that can impersonate the created Google service account. Defaults to the Sym Production AWS account ID. | `string` | `"803477428605"` | no |
-| <a name="input_sym_runtime_arn"></a> [sym\_runtime\_arn](#input\_sym\_runtime\_arn) | The ARN of the Sym Runtime Role, which will be impersonating the created Google service account. Defaults to the Sym Production Runtime ARN. | `string` | `"arn:aws:iam::803477428605:role/phoenix-prod-runtime"` | no |
+| <a name="input_sym_runtime_arn"></a> [sym\_runtime\_arn](#input\_sym\_runtime\_arn) | The ARN of the Sym Runtime Role, which will be impersonating the created Google service account. Defaults to the Sym Production Runtime ARN. | `string` | `"arn:aws:sts::803477428605:assumed-role/phoenix-prod-runtime/phoenix-prod-runtime"` | no |
 
 ## Outputs
 
