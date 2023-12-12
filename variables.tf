@@ -27,5 +27,5 @@ variable "sym_account_id" {
 variable "sym_runtime_arn" {
   description = "The ARN of the Sym Runtime Role, which will be impersonating the created Google service account. Defaults to the Sym Production Runtime ARN."
   type        = string
-  default     = "arn:aws:iam::803477428605:role/phoenix-prod-runtime"
+  default     = "arn:aws:sts::803477428605:assumed-role/phoenix-prod-runtime/phoenix-prod-runtime"
 }
