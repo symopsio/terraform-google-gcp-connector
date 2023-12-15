@@ -18,6 +18,16 @@ variable "enable_google_group_management" {
   default     = false
 }
 
+variable "accessible_secrets" {
+  description = "A map of google_secret_manager_secret objects to grant the Sym Integration read-only access to."
+  type = list(object({
+    project   = string
+    secret_id = string
+    name      = string
+  }))
+  default = null
+}
+
 variable "sym_account_id" {
   description = "The AWS account ID that can impersonate the created Google service account. Defaults to the Sym Production AWS account ID."
   type        = string

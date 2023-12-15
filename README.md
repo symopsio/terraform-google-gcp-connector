@@ -20,7 +20,11 @@ module "gcp_connector" {
   identity_pool_project_id = "my-project-id"
   gcp_org_id               = "123456789"
 
+  # Enable the Admin SDK API if managing Google Group membership
   enable_google_group_management = true
+  
+  # A list of Google Secret Manager secrets to which the Sym Runtime may have read-only access
+  accessible_secrets = [google_secret_manager_secret.okta_api_key]
 }
 ```
 
@@ -64,8 +68,10 @@ No modules.
 | [google_project_service.admin_sdk_api](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_service) | resource |
 | [google_project_service.iam_api](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_service) | resource |
 | [google_project_service.resource_manager_api](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_service) | resource |
+| [google_project_service.secretmanager_api](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_service) | resource |
 | [google_project_service.service_account_credentials_api](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_service) | resource |
 | [google_project_service.sts_api](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_service) | resource |
+| [google_secret_manager_secret_iam_member.secret_reader](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/secret_manager_secret_iam_member) | resource |
 | [google_service_account.sym](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_account) | resource |
 | [google_service_account_iam_member.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_account_iam_member) | resource |
 | [sym_integration.google_workload_identity_federation](https://registry.terraform.io/providers/symopsio/sym/latest/docs/resources/integration) | resource |
@@ -76,6 +82,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_accessible_secrets"></a> [accessible\_secrets](#input\_accessible\_secrets) | A map of google\_secret\_manager\_secret objects to grant the Sym Integration read-only access to. | <pre>list(object({<br>    project   = string<br>    secret_id = string<br>    name      = string<br>  }))</pre> | `null` | no |
 | <a name="input_enable_google_group_management"></a> [enable\_google\_group\_management](#input\_enable\_google\_group\_management) | A boolean indicating whether to enable the Admin SDK API to allow the Sym Integration to manage Google Group membership. | `bool` | `false` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | An environment qualifier for the resources this module creates, e.g. staging, or prod. | `string` | n/a | yes |
 | <a name="input_gcp_org_id"></a> [gcp\_org\_id](#input\_gcp\_org\_id) | The Organization ID of your Google Cloud Organization | `any` | n/a | yes |
