@@ -82,7 +82,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_accessible_secrets"></a> [accessible\_secrets](#input\_accessible\_secrets) | A map of google\_secret\_manager\_secret objects to grant the Sym Integration read-only access to. | <pre>list(object({<br>    project   = string<br>    secret_id = string<br>    name      = string<br>  }))</pre> | `null` | no |
+| <a name="input_accessible_secrets"></a> [accessible\_secrets](#input\_accessible\_secrets) | A map of google\_secret\_manager\_secret objects to grant the Sym Integration read-only access to. | <pre>list(object({<br>    project   = string<br>    secret_id = string<br>    name      = string<br>  }))</pre> | `[]` | no |
 | <a name="input_enable_google_group_management"></a> [enable\_google\_group\_management](#input\_enable\_google\_group\_management) | A boolean indicating whether to enable the Admin SDK API to allow the Sym Integration to manage Google Group membership. | `bool` | `false` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | An environment qualifier for the resources this module creates, e.g. staging, or prod. | `string` | n/a | yes |
 | <a name="input_gcp_org_id"></a> [gcp\_org\_id](#input\_gcp\_org\_id) | The Organization ID of your Google Cloud Organization | `any` | n/a | yes |

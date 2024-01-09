@@ -25,7 +25,7 @@ variable "accessible_secrets" {
     secret_id = string
     name      = string
   }))
-  default = null
+  default = []
 }
 
 variable "sym_account_id" {

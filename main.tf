@@ -123,9 +123,13 @@ resource "google_project_service" "admin_sdk_api" {
 }
 
 ######## Google Secret Manager Secrets Access Resources
+locals {
+  secretmanager_api_count = length(var.accessible_secrets) > 0 ? 1 : 0
+}
+
 # Enable the Secret Manager API in the Workload Identity Pool Project
 resource "google_project_service" "secretmanager_api" {
-  count = var.accessible_secrets ? 1 : 0
+  count = local.secretmanager_api_count
 
   project = data.google_project.sym_integration.project_id
   service = "secretmanager.googleapis.com"
@@ -137,7 +141,7 @@ resource "google_project_service" "secretmanager_api" {
 # For each given secret, grant the Sym Service Account the secretAccessor role.
 resource "google_secret_manager_secret_iam_member" "secret_reader" {
   for_each = { # Can't for-each over a list of objects, so converting it to a map of unique names to secret objects
-    for _, secret in var.accessible_secrets : secret.name => secret
+    for secret in var.accessible_secrets : "${secret.project}/${secret.secret_id}" => secret
   }
 
   project   = each.value.project
