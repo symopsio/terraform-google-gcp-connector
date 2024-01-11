@@ -122,6 +122,34 @@ resource "google_project_service" "admin_sdk_api" {
   disable_dependent_services = false
 }
 
+######## Google Secret Manager Secrets Access Resources
+locals {
+  secretmanager_api_count = length(var.accessible_secrets) > 0 ? 1 : 0
+}
+
+# Enable the Secret Manager API in the Workload Identity Pool Project
+resource "google_project_service" "secretmanager_api" {
+  count = local.secretmanager_api_count
+
+  project = data.google_project.sym_integration.project_id
+  service = "secretmanager.googleapis.com"
+
+  disable_on_destroy         = false
+  disable_dependent_services = false
+}
+
+# For each given secret, grant the Sym Service Account the secretAccessor role.
+resource "google_secret_manager_secret_iam_member" "secret_reader" {
+  for_each = { # Can't for-each over a list of objects, so converting it to a map of unique names to secret objects
+    for secret in var.accessible_secrets : "${secret.project}/${secret.secret_id}" => secret
+  }
+
+  project   = each.value.project
+  role      = "roles/secretmanager.secretAccessor"
+  member    = "serviceAccount:${google_service_account.sym.email}"
+  secret_id = each.value.secret_id
+}
+
 ######## Sym Resources
 
 # Create a sym_integration for the created Google Workload Identity Federation resources.
